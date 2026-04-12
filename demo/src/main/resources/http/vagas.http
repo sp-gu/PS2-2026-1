@@ -1,0 +1,32 @@
+### Listar todas as vagas (GET)
+GET http://localhost:8080/fci/api/vagas
+
+### Buscar vaga por ID (GET)
+GET http://localhost:8080/fci/api/vagas/1
+
+### Criar uma nova vaga (POST)
+POST http://localhost:8080/fci/api/vagas
+Content-Type: application/json
+
+{
+  "titulo": "Desenvolvedor Mobile",
+  "descricao": "Criação de aplicativos para Android e iOS usando Flutter.",
+  "publicacao": "2025-10-15",
+  "ativo": true,
+  "idEmpresa": 3
+}
+
+### Atualizar uma vaga existente (PUT no ID 1)
+PUT http://localhost:8080/fci/api/vagas/1
+Content-Type: application/json
+
+{
+  "titulo": "Desenvolvedor Java Sênior",
+  "descricao": "Atuação em projetos backend complexos com Java e arquitetura de microsserviços.",
+  "publicacao": "2025-10-01",
+  "ativo": false,
+  "idEmpresa": 1
+}
+
+### Deletar uma vaga (DELETE no ID 1)
+DELETE http://localhost:8080/fci/api/vagas/1

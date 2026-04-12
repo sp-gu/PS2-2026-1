@@ -1,0 +1,28 @@
+### Listar todas as empresas (GET)
+GET http://localhost:8080/fci/api/empresas
+
+### Buscar empresa por ID (GET)
+GET http://localhost:8080/fci/api/empresas/1
+
+### Criar uma nova empresa (POST)
+POST http://localhost:8080/fci/api/empresas
+Content-Type: application/json
+
+{
+  "nome": "Tech Inovações SA",
+  "cnpj": "99.888.777/0001-22",
+  "emailContato": "contato@techinovacoes.com"
+}
+
+### Atualizar uma empresa existente (PUT no ID 1)
+PUT http://localhost:8080/fci/api/empresas/1
+Content-Type: application/json
+
+{
+  "nome": "Empresa Alfa LTDA (Atualizada)",
+  "cnpj": "12.345.678/0001-90",
+  "emailContato": "novoemail@empresa-alfa.com"
+}
+
+### Deletar uma empresa (DELETE no ID 1)
+DELETE http://localhost:8080/fci/api/empresas/1

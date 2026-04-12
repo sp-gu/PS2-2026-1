@@ -1,0 +1,30 @@
+### Listar todos os estudantes (GET)
+GET http://localhost:8080/fci/api/estudantes
+
+### Buscar estudante por ID (GET)
+GET http://localhost:8080/fci/api/estudantes/1
+
+### Criar um novo estudante (POST)
+POST http://localhost:8080/fci/api/estudantes
+Content-Type: application/json
+
+{
+  "nome": "João Pedro Silva",
+  "email": "joao.pedro@email.com",
+  "nascimento": "2004-05-10",
+  "anoIngresso": 2023
+}
+
+### Atualizar um estudante existente (PUT no ID 1)
+PUT http://localhost:8080/fci/api/estudantes/1
+Content-Type: application/json
+
+{
+  "nome": "Ana Paula Souza (Atualizada)",
+  "email": "ana.souza.nova@email.com",
+  "nascimento": "2002-03-15",
+  "anoIngresso": 2020
+}
+
+### Deletar um estudante (DELETE no ID 1)
+DELETE http://localhost:8080/fci/api/estudantes/1
