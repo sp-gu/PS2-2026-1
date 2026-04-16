@@ -1,12 +1,17 @@
 package com.example.vagasws;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 
 public class Empresa {
+    @Id @GeneratedValue
     private long id;
     private String nome;
     private String cnpj;
