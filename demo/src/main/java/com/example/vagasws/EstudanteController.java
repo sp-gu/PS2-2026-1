@@ -1,6 +1,6 @@
 package com.example.vagasws;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,40 +13,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class EstudanteController {
+    
+    @Autowired
+    private EstudanteRepo estudantesRepo;
+    
     public EstudanteController(){
         
     }
 
-    @Autowired
-    private EstudanteRepo estudantesRepo;
-
-    @GetMapping("/fci/api/estudantes")    
+    @GetMapping("/h2-console/estudantes")    
     public Iterable<Estudante> getEstudantes(){
         Iterable<Estudante> estudantes = estudantesRepo.findAll();
         return estudantes;
     }
 
-    @PostMapping("/fci/api/estudante")
+    @PostMapping("/h2-console/estudantes")
     public Estudante createEstudante(@RequestBody Estudante novoEstudante){
         return estudantesRepo.save(novoEstudante);
     }
     
-    @PutMapping("/fci/api/estudante/{id}")
-    public Estudante updateEstudante(@PathVariable long id, @RequestBody Estudante estudanteAtualizado) {
-        for (Estudante e : estudantes) {
-            if (e.getId() == id) {
-                e.setNome(estudanteAtualizado.getNome());
-                e.setNascimento(estudanteAtualizado.getNascimento());
-                e.setEmail(estudanteAtualizado.getEmail()); 
-                e.setAnoIngresso(estudanteAtualizado.getAnoIngresso());
-                return e;
-            }
-        }
-        return null; // Retorna null caso o estudante não seja encontrada
+    @PutMapping("/h2-console/estudantes/{id}")
+    public Estudante updateEstudante(long id, Estudante estudanteAtualizado) {
+        Optional<Estudante> est = estudantesRepo.findById(id);
+        if(est.isEmpty()) return null;
+        Estudante estudante = est.get();
+        estudante.setNome(estudanteAtualizado.getNome());
+        estudante.setEmail(estudanteAtualizado.getEmail());
+        estudante.setNascimento(estudanteAtualizado.getNascimento());
+        estudante.setAnoIngresso(estudanteAtualizado.getAnoIngresso());
+        return estudantesRepo.save(estudante);
     }
 
-    @DeleteMapping("/fci/api/estudantes/{id}")
+    @DeleteMapping("/h2-console/estudantes/{id}")
     public void deleteEstudante(@PathVariable long id) {
-        estudantes.removeIf(e -> e.getId() == id); 
+        estudantesRepo.deleteById(id);
     }
 }

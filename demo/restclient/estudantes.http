@@ -1,11 +1,11 @@
 ### Listar todos os estudantes (GET)
-GET http://localhost:8080/fci/api/estudantes
+GET http://localhost:8080/h2-console/estudantes
 
 ### Buscar estudante por ID (GET)
-GET http://localhost:8080/fci/api/estudantes/1
+GET http://localhost:8080/h2-console/estudantes/1
 
 ### Criar um novo estudante (POST)
-POST http://localhost:8080/fci/api/estudantes
+POST http://localhost:8080/h2-console/estudantes
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Atualizar um estudante existente (PUT no ID 1)
-PUT http://localhost:8080/fci/api/estudantes/1
+PUT http://localhost:8080/h2-console/estudantes/1
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### Deletar um estudante (DELETE no ID 1)
-DELETE http://localhost:8080/fci/api/estudantes/1
+DELETE http://localhost:8080/h2-console/estudantes/1

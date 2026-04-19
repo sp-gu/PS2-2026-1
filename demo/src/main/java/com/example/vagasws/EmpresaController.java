@@ -20,19 +20,19 @@ public class EmpresaController {
 
     }
 
-    @GetMapping("/fci/api/empresas")    
+    @GetMapping("/h2-console/empresas")
     public Iterable<Empresa> getEmpresas(){
         Iterable<Empresa> empresas = empresasRepo.findAll();
         return empresas;
     }
 
-    @PostMapping("/fci/api/empresas")
+    @PostMapping("/h2-console/empresas")
     public Empresa createEmpresa(@RequestBody Empresa novaEmpresa){
         return empresasRepo.save(novaEmpresa);
     }
 
     // Método PUT para atualizar uma empresa existente
-    @PutMapping("/fci/api/empresas/{id}")
+    @PutMapping("/h2-console/empresas/{id}")
     public Empresa updateEmpresa(long id, Empresa e){
         Optional<Empresa> emp = empresasRepo.findById(id);
         if(emp.isEmpty()) return null;
@@ -44,7 +44,7 @@ public class EmpresaController {
     }
 
     // Método DELETE para remover uma empresa
-    @DeleteMapping("/fci/api/empresas/{id}")
+    @DeleteMapping("/h2-console/empresas/{id}")
     public void deleteEmpresa(@PathVariable long id) {
         empresasRepo.deleteById(id);
     }

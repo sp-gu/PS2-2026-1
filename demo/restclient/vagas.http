@@ -1,11 +1,11 @@
 ### Listar todas as vagas (GET)
-GET http://localhost:8080/fci/api/vagas
+GET http://localhost:8080/h2-console/vagas
 
 ### Buscar vaga por ID (GET)
-GET http://localhost:8080/fci/api/vagas/1
+GET http://localhost:8080/h2-console/vagas/1
 
 ### Criar uma nova vaga (POST)
-POST http://localhost:8080/fci/api/vagas
+POST http://localhost:8080/h2-console/vagas
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Atualizar uma vaga existente (PUT no ID 1)
-PUT http://localhost:8080/fci/api/vagas/1
+PUT http://localhost:8080/h2-console/vagas/1
 Content-Type: application/json
 
 {
@@ -29,4 +29,4 @@ Content-Type: application/json
 }
 
 ### Deletar uma vaga (DELETE no ID 1)
-DELETE http://localhost:8080/fci/api/vagas/1
+DELETE http://localhost:8080/h2-console/vagas/1

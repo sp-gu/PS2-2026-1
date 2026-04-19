@@ -1,6 +1,5 @@
 package com.example.vagasws;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,34 +19,32 @@ public class VagaController {
         
     }
 
-    @GetMapping("/fci/api/vagas")    
+    @GetMapping("/h2-console/vagas")    
     public Iterable<Vaga> getVagas(){
         Iterable<Vaga> vagas = vagasRepo.findAll();
         return vagas;
     }
 
-    @PostMapping("/fci/api/vagas")
+    @PostMapping("/h2-console/vagas")
     public Vaga createVaga(@RequestBody Vaga novaVaga){
         return vagasRepo.save(novaVaga);
     }
     
-    @PutMapping("/fci/api/vgas/{id}")
-    public Vaga updateVaga(@PathVariable long id, @RequestBody Vaga vagaAtualizada) {
-        for (Vaga e : vagas) {
-            if (e.getId() == id) {
-                e.setTitulo(vagaAtualizada.getTitulo());
-                e.setDescricao(vagaAtualizada.getDescricao());
-                e.setPublicacao(vagaAtualizada.getPublicacao()); 
-                e.setAtivo(vagaAtualizada.getAtivo());
-                e.setIdEmpresa(vagaAtualizada.getIdEmpresa());
-                return e;
-            }
-        }
-        return null; // Retorna null caso a vaga não seja encontrada
+    @PutMapping("/h2-console/vgas/{id}")
+    public Vaga updateVaga(long id, Vaga vagaAtualizada) {
+        Optional<Vaga> vag = vagasRepo.findById(id);
+        if(vag.isEmpty()) return null;
+        Vaga vaga = vag.get();
+        vaga.setTitulo(vagaAtualizada.getTitulo());
+        vaga.setDescricao(vagaAtualizada.getDescricao());
+        vaga.setPublicacao(vagaAtualizada.getPublicacao());
+        vaga.setAtivo(vagaAtualizada.getAtivo());
+        vaga.setIdEmpresa(vagaAtualizada.getIdEmpresa());
+        return vagasRepo.save(vaga);
     }
 
-    @DeleteMapping("/fci/api/vagas/{id}")
+    @DeleteMapping("/h2-console/vagas/{id}")
     public void deleteVaga(@PathVariable long id) {
-        vagas.removeIf(e -> e.getId() == id); 
+        vagasRepo.deleteById(id);
     }
 }

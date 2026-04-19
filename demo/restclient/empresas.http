@@ -1,11 +1,11 @@
 ### Listar todas as empresas (GET)
-GET http://localhost:8080/fci/api/empresas
+GET http://localhost:8080/h2-console/empresas
 
 ### Buscar empresa por ID (GET)
-GET http://localhost:8080/fci/api/empresas/1
+GET http://localhost:8080/h2-console/empresas/1
 
 ### Criar uma nova empresa (POST)
-POST http://localhost:8080/fci/api/empresas
+POST http://localhost:8080/h2-console/empresas
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### Atualizar uma empresa existente (PUT no ID 1)
-PUT http://localhost:8080/fci/api/empresas/1
+PUT http://localhost:8080/h2-console/empresas/1
 Content-Type: application/json
 
 {
@@ -25,4 +25,4 @@ Content-Type: application/json
 }
 
 ### Deletar uma empresa (DELETE no ID 1)
-DELETE http://localhost:8080/fci/api/empresas/1
+DELETE http://localhost:8080/h2-console/empresas/1
